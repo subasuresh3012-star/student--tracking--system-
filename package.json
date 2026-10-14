@@ -1,0 +1,12 @@
+{
+  "name": "student-tracking-system",
+  "version": "1.0.0",
+  "description": "A simple Student Tracking System with HTML, CSS, JavaScript and Node.js backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

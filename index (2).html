@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Tracking System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">ST</span><div><strong>StudentTrack</strong><small>Management Portal</small></div></div>
+      <nav>
+        <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a class="nav-link" href="#students">♙ <span>Students</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="online-dot"></span> System is ready</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><p class="eyebrow">STUDENT MANAGEMENT</p><h1>Student Tracking System</h1></div>
+        <div class="profile"><span class="avatar">A</span><div><strong>Admin</strong><small>Administrator</small></div></div>
+      </header>
+
+      <section id="dashboard">
+        <div class="welcome"><div><h2>Good day, Admin 👋</h2><p>Here is an overview of your student records.</p></div><span class="date-pill" id="today"></span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon blue">♙</div><p>Total Students</p><strong id="totalCount">0</strong><small>Registered students</small></article>
+          <article class="stat-card"><div class="stat-icon green">✓</div><p>Present Today</p><strong id="presentCount">0</strong><small>Marked present</small></article>
+          <article class="stat-card"><div class="stat-icon orange">◷</div><p>Absent Today</p><strong id="absentCount">0</strong><small>Marked absent</small></article>
+          <article class="stat-card"><div class="stat-icon purple">★</div><p>Average Marks</p><strong id="averageMarks">0%</strong><small>Across all students</small></article>
+        </div>
+      </section>
+
+      <section class="content-card" id="students">
+        <div class="section-heading"><div><h2>Student Records</h2><p>Add, edit, search, and manage student information.</p></div><button class="primary-btn" id="addStudentBtn">＋ Add Student</button></div>
+        <div class="toolbar"><label class="search-box">⌕ <input id="searchInput" type="search" placeholder="Search by name or department..."></label><span id="recordCount" class="record-count">0 records</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Student</th><th>Department</th><th>Year</th><th>Attendance</th><th>Marks</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="studentTable"><tr><td colspan="7" class="empty">Loading student records...</td></tr></tbody>
+          </table>
+        </div>
+        <p class="footnote">Changes are saved by the Node.js backend on this computer.</p>
+      </section>
+      <footer>Student Tracking System <span>•</span> Project Demo</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><div><p class="eyebrow">STUDENT DETAILS</p><h2 id="modalTitle">Add Student</h2></div><button class="icon-btn" id="closeModal" aria-label="Close">×</button></div>
+      <form id="studentForm">
+        <input type="hidden" id="studentId">
+        <label>Student Name<input id="name" required placeholder="Enter full name"></label>
+        <div class="form-row"><label>Department<input id="department" required placeholder="e.g. B.Sc CS"></label><label>Year<select id="year" required><option value="I Year">I Year</option><option value="II Year">II Year</option><option value="III Year">III Year</option><option value="IV Year">IV Year</option></select></label></div>
+        <div class="form-row"><label>Attendance (%)<input id="attendance" type="number" min="0" max="100" value="0" required></label><label>Marks (%)<input id="marks" type="number" min="0" max="100" value="0" required></label></div>
+        <label>Today's Status<select id="status"><option>Present</option><option>Absent</option></select></label>
+        <p class="form-error" id="formError" role="alert"></p>
+        <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelBtn">Cancel</button><button type="submit" class="primary-btn">Save Student</button></div>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
